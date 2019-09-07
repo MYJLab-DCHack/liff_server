@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  server:
+    image: node:10
+    volumes:
+      - ./:/root/liff_server
+    ports:
+      - 8888:8888
+    working_dir: /root/liff_server
+    command: 'node index.js'
