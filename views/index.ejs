@@ -14,7 +14,7 @@
   </head>
   <body>
     <div style="background: #BDB76B; position: fixed; width: 100%; text-align: center; margin: 0 auto; z-index: 1;">
-    <h1>お助けロボ</h1>
+      <h1>Transport and Delivery Office Robot</h1>
     </div>
     
     <div style="background: linear-gradient(#222222, #888888);">
@@ -24,7 +24,8 @@
       </div>
 
       <div style="text-align: center;">
-      <form name="mapForm" method="POST" action="/work" style="padding-top: 0px;">
+      <!-- <form name="mapForm" method="POST" action="/work" style="padding-top: 0px;"> -->
+        <form name="mapForm" style="padding-top: 0px;"></form>
           <span style="color: #DBD189;">X: </span><input type="text" value="" id="xPos" style=" margin-right: 10px;">
           <span style="color: #DBD189;">Y: </span><input type="text" value="" id="yPos" style=" margin-right: 10px;">
         <button type="button" class="btn btn-success" id="sub" style="background-color: #DBD189; border: 1px solid #DBD189">送信</button>
@@ -34,57 +35,57 @@
     <div style="text-align: center; background: linear-gradient(#444444, #888888);">
       <h2 style="color: #DBD189; padding-top: 30px;">お届け物</h2>
       <form>
-          <span style="color: #DBD189;">To: </span><input type="text" style=" margin-right: 10px;">
-          <span style="color: #DBD189;">From: </span><input type="text" value="kitabori" style=" margin-right: 10px;">
+        <span style="color: #DBD189;">To: </span><input type="text" style=" margin-right: 10px;">
+        <span style="color: #DBD189;">From: </span><input type="text" value="kitabori" style=" margin-right: 10px;">
         <button type="button" class="btn btn-success" style="background-color: #DBD189; border: 1px solid #DBD189">宅配申請</button>
       </form>
     </div>
     <div style="background: linear-gradient(#444444, #888888);padding-top: 30px; padding-bottom: 60px;">
     <div style="text-align: center;">
-    <h2 style="color: #DBD189; padding-top: 30px;"> オフィスコンビニ</h2>
-    <div
-    id="dropSampleA"
-    ondrop="sampleDrop( event, this );"
-    ondragover="sampleAllowDrop( event );"
-    style="background: linear-gradient(#DBD189, #FFFFFF); border: solid 1px black; width: calc(50% - 10px); height: 200px; padding: 10px; margin: 0 auto; text-align: center; overflow: scroll; display: flex; flex-wrap: wrap;"
-    >
-    <div id="dragSampleA" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
-      <div class="card-header">キットカット</div>
-      ¥120
-    </div>
-    <div id="dragSampleB" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
-      <div class="card-header">じゃがりこ</div>
-      ¥130
-    </div>
-    <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
-      <div class="card-header">うまい棒</div>
-      ¥10
-    </div>
-    <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
-      <div class="card-header">コーラ</div>
-      ¥150
-    </div>
-    <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
-      <div class="card-header">お茶</div>
-      ¥150
-    </div>
-    <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
-      <div class="card-header">カップラーメン</div>
-      ¥220
-    </div>
-    <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
-      <div class="card-header">パン</div>
-      ¥150
-    </div>
-    <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
-      <div class="card-header">コーヒー</div>
-      ¥100
-    </div>
-    <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
-      <div class="card-header">チョコレート</div>
-      ¥150
-    </div>
-</div>
+      <h2 style="color: #DBD189; padding-top: 30px;"> オフィスコンビニ</h2>
+      <div
+      id="dropSampleA"
+      ondrop="sampleDrop( event, this );"
+      ondragover="sampleAllowDrop( event );"
+      style="background: linear-gradient(#DBD189, #FFFFFF); border: solid 1px black; width: calc(50% - 10px); height: 200px; padding: 10px; margin: 0 auto; text-align: center; overflow: scroll; display: flex; flex-wrap: wrap;"
+      >
+        <div id="dragSampleA" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+          <div class="card-header">キットカット</div>
+          ¥120
+        </div>
+        <div id="dragSampleB" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+          <div class="card-header">じゃがりこ</div>
+          ¥130
+        </div>
+        <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+          <div class="card-header">うまい棒</div>
+          ¥10
+        </div>
+        <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+          <div class="card-header">コーラ</div>
+          ¥150
+        </div>
+        <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+          <div class="card-header">お茶</div>
+          ¥150
+        </div>
+        <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+          <div class="card-header">カップラーメン</div>
+          ¥220
+        </div>
+        <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+          <div class="card-header">パン</div>
+          ¥150
+        </div>
+        <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+          <div class="card-header">コーヒー</div>
+          ¥100
+        </div>
+        <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+          <div class="card-header">チョコレート</div>
+          ¥150
+        </div>
+      </div>
     </div>
     <div style="margin: 0 auto; text-align: center;">
     <img src="images/underArrow.png" style="width: 150px; height: 150px; margin-top: 20px;">
