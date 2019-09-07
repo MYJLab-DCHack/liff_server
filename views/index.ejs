@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>canvas sample</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- BootstrapのCSS読み込み -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- BootstrapのJS読み込み -->
+    <script src="js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div style="background: #BDB76B; position: fixed; width: 100%; text-align: center; margin: 0 auto; z-index: 1;">
+    <h1>お助けロボ</h1>
+    </div>
+    
+    <div style="background: linear-gradient(#222222, #888888);">
+      <div style="text-align: center; padding-top: 80px;">
+        <h2 style="color: #DBD189">座席情報</h2>
+        <canvas id="canvas"></canvas>
+      </div>
+
+      <div style="text-align: center;">
+      <form name="mapForm" method="POST" action="/work" style="padding-top: 0px;">
+          <span style="color: #DBD189;">X: </span><input type="text" value="" id="xPos" style=" margin-right: 10px;">
+          <span style="color: #DBD189;">Y: </span><input type="text" value="" id="yPos" style=" margin-right: 10px;">
+        <button type="button" class="btn btn-success" id="sub" style="background-color: #DBD189; border: 1px solid #DBD189">送信</button>
+      </form>
+      </div>
+    </div>
+    <div style="text-align: center; background: linear-gradient(#444444, #888888);">
+      <h2 style="color: #DBD189; padding-top: 30px;">お届け物</h2>
+      <form>
+          <span style="color: #DBD189;">To: </span><input type="text" style=" margin-right: 10px;">
+          <span style="color: #DBD189;">From: </span><input type="text" value="kitabori" style=" margin-right: 10px;">
+        <button type="button" class="btn btn-success" style="background-color: #DBD189; border: 1px solid #DBD189">宅配申請</button>
+      </form>
+    </div>
+    <div style="background: linear-gradient(#444444, #888888);padding-top: 30px; padding-bottom: 60px;">
+    <div style="text-align: center;">
+    <h2 style="color: #DBD189; padding-top: 30px;"> オフィスコンビニ</h2>
+    <div
+    id="dropSampleA"
+    ondrop="sampleDrop( event, this );"
+    ondragover="sampleAllowDrop( event );"
+    style="background: linear-gradient(#DBD189, #FFFFFF); border: solid 1px black; width: calc(50% - 10px); height: 200px; padding: 10px; margin: 0 auto; text-align: center; overflow: scroll; display: flex; flex-wrap: wrap;"
+    >
+    <div id="dragSampleA" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+      <div class="card-header">キットカット</div>
+      ¥120
+    </div>
+    <div id="dragSampleB" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+      <div class="card-header">じゃがりこ</div>
+      ¥130
+    </div>
+    <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+      <div class="card-header">うまい棒</div>
+      ¥10
+    </div>
+    <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+      <div class="card-header">コーラ</div>
+      ¥150
+    </div>
+    <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+      <div class="card-header">お茶</div>
+      ¥150
+    </div>
+    <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+      <div class="card-header">カップラーメン</div>
+      ¥220
+    </div>
+    <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+      <div class="card-header">パン</div>
+      ¥150
+    </div>
+    <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+      <div class="card-header">コーヒー</div>
+      ¥100
+    </div>
+    <div id="dragSampleC" class="card border-success mb-3" draggable="true" ondragstart="sampleDrag( event );" style="border: solid 1px black; width: 200px; margin: 0 auto; margin-top: 5px;">
+      <div class="card-header">チョコレート</div>
+      ¥150
+    </div>
+</div>
+    </div>
+    <div style="margin: 0 auto; text-align: center;">
+    <img src="images/underArrow.png" style="width: 150px; height: 150px; margin-top: 20px;">
+    </div>
+<div
+    id="dropSampleB"
+    ondrop="sampleDrop( event, this );"
+    ondragover="sampleAllowDrop( event );"
+    style="background: linear-gradient(#DBD189, #FFFFFF);border: solid 1px black; width: 250px; height: auto; margin: 0 auto; text-align: center; margin-top: 20px; overflow: scroll; display: flex; flex-wrap: wrap;"
+>
+  <img src="images/kago.png" style="z-index: 1; width: 250px; height: 200px; margin-top: 10px;">
+  <p style="clear: both; background-color: #BDB76B; color: white; margin: 0 auto; width: 100%; text-align: center;">買い物かご</p>
+</div>
+<div style="clear: both;"></div>
+</div>
+  <script>
+
+    var sub = document.getElementById('sub');
+    sub.addEventListener('click',function() {
+      document.mapForm.submit();
+    })
+
+    // var canvas; // canvas要素(HTMLCanvasElement)
+    // var ctx; // 2Dコンテキスト(CanvasRenderingContext2D)
+    var canvasW = 400; // canvas要素の横幅(px)
+    var canvasH = 400; // canvas要素の縦幅(px)
+    var mouseX; // 最後にクリックされた位置のx座標
+    var mouseY; // 最後にクリックされた位置のy座標
+
+
+    const canvas = document.getElementsByTagName("canvas")[0]; 
+    const ctx = canvas.getContext("2d");
+
+    let imagePath = "images/room.jpg";
+    draw(canvas,imagePath);
+    function draw(canvas,imagePath){
+      const image = new Image();
+      image.addEventListener("load",function (){
+        canvas.width = image.naturalWidth;
+        canvas.height = image.naturalHeight;
+        ctx.drawImage(image, 0, 0);
+      });
+      image.src = imagePath;
+    }
+
+    // canvas.onclick = function (e) {
+    function drawCircle(e) {
+      ctx.clearRect(0, 0, canvasW, canvasH);
+      draw(canvas, imagePath);
+      // クリック位置の座標計算（canvasの左上を基準。-2ずつしているのはborderの分）
+      var rect = e.target.getBoundingClientRect();
+      mouseX = e.clientX - Math.floor(rect.left) - 2;
+      mouseY = e.clientY - Math.floor(rect.top) - 2;
+
+      // クリック位置を中心に円を描画
+      ctx.beginPath();
+      ctx.arc(mouseX, mouseY, 5, 0, Math.PI * 2, false);
+      ctx.fill();
+
+      console.log(`x: ${mouseX}\ny: ${mouseY}`);
+      document.getElementById("xPos").value = mouseX;
+      document.getElementById("yPos").value = mouseY;
+    }
+    canvas.addEventListener('click', drawCircle, false);
+
+    function sampleDrag( $event ) {
+      $event.dataTransfer.setData( "Text", $event.target.id );
+    }
+
+    function sampleDrop( $event, $this ) {
+      $event.preventDefault();
+      var $data = $event.dataTransfer.getData( "Text" );
+      $this.appendChild( document.getElementById( $data ) );
+    }
+    function sampleAllowDrop( $event ) {
+      $event.preventDefault();
+    }
+
+    var move_flg = "";
+    var move_start_x = 0;
+    var move_start_y = 0;
+    // start drag
+    window.onmousedown = function(e) {
+      move_flg = "true";
+      move_start_x = e.clientX - parseInt(document.getElementById("obj").style.left.replace("px",""));
+      move_start_y = e.clientY - parseInt(document.getElementById("obj").style.top.replace("px",""));
+    }
+    // end drag
+    window.onmouseup = function(e) {
+      move_flg = "false";
+    }
+    // dræg 
+    window.onmousemove = function(e) {
+      if(move_flg == "true") {
+        document.getElementById("obj").style.left = (e.clientX - move_start_x) + "px";
+        document.getElementById("obj").style.top = (e.clientY - move_start_y) + "px";    
+      }
+    }
+
+  </script>
+  </body>
+</html>
